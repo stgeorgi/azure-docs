@@ -26,7 +26,7 @@ Here's what you need to configure MSIX app attach:
 
 ## Turn off automatic updates for MSIX app attach applications
 
-Before you get started, you must disable automatic updates for MSIX app attach applications. To disable automatic updates, you'll need to run the following commands in an elevated command prompt:
+Before you get started, you must disable automatic updates for MSIX app attach applications. To disable automatic updates for Microsoft Store applications, you'll need to run the following commands in an elevated command prompt:
 
 ```cmd
 rem Disable Store auto update:
@@ -43,18 +43,8 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 
 ```
 
-## Configure the MSIX app attach management interface
-
-Next, you'll need to download and configure the the MSIX app attach management interface for the Azure portal.
-
-To set up the management interface:
-
-1. [Open the Azure portal](https://portal.azure.com).
-2. If you get a prompt asking if you consider the extension trustworthy, select **Allow**.
-
-      > [!div class="mx-imgBorder"]
-      > ![A screenshot of the untrusted extensions window. "Allow" is highlighted in red.](media/untrusted-extensions.png)
-
+   >[!NOTE]
+   >For MSIX applications taht do not come from the Microsoft store, the process for turning off auto update will be application specific. 
 
 ## Add an MSIX image to the host pool
 
@@ -113,7 +103,7 @@ To publish the apps:
 2. Select the application group you want to publish the apps to.
 
    >[!NOTE]
-   >MSIX applications can be delivered with MSIX app attach to both remote app and desktop app groups
+   >MSIX applications can be delivered with MSIX app attach to both remote app and desktop app groups.
 
 3. Once you're in the app group, select the **Applications** tab. The **Applications** grid will display all existing apps within the app group.
 
@@ -146,7 +136,9 @@ To publish the apps:
 
         - **Icon path**
         - **Icon index**
-        - **Show in web feed**
+
+   >[!NOTE]
+   >When specifying a custom icon the icon file cann't be part of the MSIX package and must be accessible from all session hosts. 
 
 6. When you're done, select **Save**.
 
@@ -211,6 +203,18 @@ To remove individual MSIX apps from your package:
 3. Open the **Applications** tab.
 
 4. Select the app you want to remove, then select **Remove**.
+
+## Update MSIX apps
+
+To update application delivered via MSIX app attach from one version to another:
+
+1. Prepare MSIX image containing the new version of the application and upload to MSIX share
+
+2. Go to your host pool and select **MSIX packages**. You should see a list of all existing MSIX packages within the host pool.
+
+3. Select **Add** and associate the new MSIX package with the host pool. Confirm new package state is set to inactive. 
+
+4. When appropriate based on users' usage patterns from **MSIX packages** select the current package and set its state to inactive. Then select the new MSIX package and set its state to active.
 
 ## Next steps
 
