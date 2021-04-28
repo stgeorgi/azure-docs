@@ -63,6 +63,10 @@ MSIX app attach doesn't currently support Azure AD DS. Because Azure AD DS compu
 
 Using MSIX app attach over HTTP or HTTPs is currently not supported.
 
+## Can I use MSIX app attach with Office applications?
+
+Usinx MSIX app attach to deliver Office applications is currently not supported.
+
 ## Can I restage the same MSIX application?
 
 Yes. You can restage applications you've already restaged, and this shouldn't cause any errors.
