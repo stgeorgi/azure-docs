@@ -94,6 +94,9 @@ Follow these instructions to confirm the components are installed and to check f
 - Confirm the host pool's name is accurate and the host pool exists in Azure Virtual Desktop.
 - Confirm the account has at least Contributor permissions on the Azure subscription or resource group.
 
+>[!NOTE]
+>If you need additional infromation on troubleshooting PowerShell DSC, you can go [here](/virtual-machines/extensions/custom-script-windows#troubleshoot). 
+
 ### Error: Authentication failed, error in C:\Windows\Temp\ScriptLog.log
 
 **Cause:** PowerShell DSC was able to execute but couldn't connect to Azure Virtual Desktop.
